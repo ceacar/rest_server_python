@@ -15,7 +15,7 @@ start:
 	pipenv run python run.py
 
 $(integration_test):
-	$(npm) install --no-save ./assets/c1-code-test-take-home-tester-$(tester_version).tgz
+	$(npm) install --no-save ./nodejs_settings.tgz
 
 .PHONY: check-pipenv-version
 
