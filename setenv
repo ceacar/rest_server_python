@@ -5,3 +5,5 @@ export PYTHONPATH=$PWD:$PWD/$project_name:$PYTHONPATH
 export PORT=35555
 export SERVER_IP="localhost"
 export PROJECT_NAME="$project_name"
+export REDIS_URL="localhost"
+export REDIS_PORT="10000"

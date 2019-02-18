@@ -26,10 +26,9 @@ def create_app():
 
 
     time_out = os.environ.get("TTL_TIMEOUT", "30")
-    redis_url = os.environ.get("redis_url", "0.0.0.0")
-    redis_port = os.environ.get("redis_port", "10000")
+    redis_url = os.environ.get("REDIS_URL", "0.0.0.0")
+    redis_port = os.environ.get("REDIS_PORT", "10000")
 
-    REDIS_URL = '{redis_url}:{redis_port}/0'.format(redis_url = redis_url, redis_port = redis_port)
     app.config["REDIS_URL"] = redis_url
     app.config["REDIS_PORT"] = redis_port
     app.config["TTL_TIMEOUT"] = time_out
