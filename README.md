@@ -1,24 +1,17 @@
-To install dependencies:
+1.install needed environment:
+make install
 
-    make install
+2.run web api server
+make run
 
-If you would like to add additional dependencies, simply run
+#if you want to run in a differe port or a different ip, edit makefile, change the service_port to other port and change the service_ip to other ip
 
-    pipenv install <package-name>
 
-To run the test suite:
+3.run utest
+make utest
 
-    make test
+4.run flask itest
+make itest
 
-Test output is written to both `stdout` and `integration-test.log`
-
-To run the app:
-
-    make start 
-
-(All of these are also available in the "Run" menu)
-
-If you wish to run the integration tests on your own machine, you will need to
-install [NodeJS][] v8 or greater in addition to Python, make, and pipenv
-
-[NodeJS]: https://nodejs.org/
+5.want to try the curl cmd, please refer to file named "example_cmd_for_sanity_test.py",
+it provides two curl cmd for two end points
