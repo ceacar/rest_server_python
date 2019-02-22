@@ -11,6 +11,6 @@ curl -i --write-out %{http_code} --header "Content-Type: application/json" \
 echo
 echo
 #get with key
-curl -i --write-out %{http_code} http://localhost:$port/get/$url_md5
+curl -i --write-out %{http_code} http://localhost:$port/get?url=$url_md5
 echo
 

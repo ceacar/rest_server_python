@@ -37,8 +37,9 @@ class CacheAPI(MethodView):
         except Exception:
             abort("Unknown Error", 501)
 
-    def get(self, key: str):
+    def get(self):
         try:
+            key = request.args.get('url', None)
             res = cache.get_cacher().get(key)
             if res:
                 return (self.format_result("", res), 200)

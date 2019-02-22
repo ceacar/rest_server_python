@@ -5,6 +5,7 @@ from flask import current_app as app
 from werkzeug.contrib.cache import SimpleCache
 import time
 import redis
+import json
 
 T = TypeVar('T')
 
@@ -15,6 +16,7 @@ class Cacher:
 
 
     def __init__(self):
+        print(app.config)
         self.conn = redis.StrictRedis(
             host = app.config["REDIS_URL"],
             port = app.config["REDIS_PORT"])
@@ -29,7 +31,7 @@ class Cacher:
     def save(self, key: str, value: T):
         #save to redis
         try:
-            self.conn.set(key, value)
+            self.conn.set(key, json.dumps(value))
         except Exception as e:
             print("saved to redis failed")
             print(e)
@@ -40,8 +42,9 @@ class Cacher:
 
     def retrieve_value_from_redis(self, key: str) -> T:
         try:
-            res_byte = self.conn.get(key)
-            res = res_byte.decode()
+            res = self.conn.get(key)
+            if res:
+                res = res.decode()
             return res
 
         except Exception as e:
